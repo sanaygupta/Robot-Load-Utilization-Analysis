@@ -180,22 +180,14 @@ This type of program is used in robotics and industrial automation. Every roboti
 
 ## 4. Algorithm
 
-1. Start the program.
-2. Define a structure `Robot` containing robot ID, robot type, capacity, load, operating time, utilization, and status.
-3. Declare an array of structures to store the details of multiple robots.
-4. Read the number of robots `n` and validate that it is within the allowed range.
-5. Repeat the following steps for each robot `i = 1` to `n`:
-   - Accept the robot ID.
-   - Accept the robot type.
-   - Accept the payload capacity and ensure that it is greater than zero.
-   - Accept the actual load.
-   - Accept the operating time.
+1. Start.
+2. Read the number of robots `n`.
+3. For each robot `i = 1` to `n`:
+   - Accept robot ID, robot type, capacity, load, and operating time.
    - Calculate load utilization = (load / capacity) x 100.
-   - If load > capacity, mark the robot as "Overloaded"; otherwise, mark it as "Within Limit".
-6. Print the table heading.
-7. Repeat for each robot and display its ID, type, capacity, load, operating time, utilization, and status.
-8. Print the closing border of the table.
-9. Stop the program.
+   - If load > capacity, mark as "Overloaded", else "Within Limit".
+4. Display the details of all robots in tabular form.
+5. Stop.
 
 ## 5. C Program
 
@@ -396,23 +388,15 @@ Enter operating time (hours): 8
 
 ```mermaid
 flowchart TD
-    A([Start]) --> B[/Read number of robots n/]
-    B --> C{Is n valid?}
-    C -- No --> B
-    C -- Yes --> D[Set i = 1]
-    D --> E{i <= n?}
-    E -- No --> L[/Display all robot details in tabular form/]
-    E -- Yes --> F[/Input robot ID, type, capacity, load and operating time/]
-    F --> G{Is capacity > 0?}
-    G -- No --> F
-    G -- Yes --> H[Calculate utilization = load / capacity x 100]
-    H --> I{Is load > capacity?}
-    I -- Yes --> J[Status = Overloaded]
-    I -- No --> K[Status = Within Limit]
-    J --> M[i = i + 1]
-    K --> M
-    M --> E
-    L --> Z([Stop])
+    A([Start]) --> B[/Read n/]
+    B --> C["For i = 1 to n<br/>Input robot details"]
+    C --> D["Calculate<br/>utilization (%)"]
+    D --> E{"Is load ><br/>capacity?"}
+    E -- Yes --> F["Display 'Overloaded'"]
+    E -- No --> G["Display 'Within Limit'"]
+    F --> H[/Display results/]
+    G --> H
+    H --> I([Stop])
 ```
 
 ## 8. FAQs
